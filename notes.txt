@@ -1,0 +1,49 @@
+*Creating a backend*
+
+npm init
+npm i express 
+
+create server.js 
+require express and assign it to app
+call app.listen(port_num,func(){})
+add a route by app.get("/contact",(req,res)=>{res.send("Somethingg")}) 
+
+run node server.js
+
+To avoid restarting server again and again to see your changes, npm i nodemon
+Go to package.json and inside scripts, replace your test line with :     "server": "nodemon server.js"
+Then nodemon start server to run the server with nodemon
+
+
+*CORS*
+Cross-origin resource sharing
+It is used to configure which client is and which client is not allowed the access the server 
+If the client is not allowed according to your CORS, it adds a header file in your response telling the browser that the request should be blocked or not.
+
+npm i cors
+const cors = require("cors")
+
+
+*Postman*
+
+Create a new collection
+Add a request into that collection on your address like http://localhost:8000
+The upper half is for req and the lower half is for res. View the Header in the res.
+
+When you add app.use(cors());, you can see Access-Control-Allow-Origin *
+When you use const options = {origin:"http://localhost:3000"} and app.use(cors(options)), you will see Access-Control-Allow-Origin http://localhost:3000, it means that only localhost:3000 is allowed, our fronted is hosted at this address, so e can try testing from there.
+Add useSuccessStatus: 200 in the options to check the status
+
+
+*Properly Applying Cors*
+
+function options(req,res){let tmp; let origin = req.header("Origin) if(allowed.indexOf(origin) > -1){tmp ={origin:true, optionSuccessStatus:200}; else{tmp = {origin:false}}res(null,tmp)}}
+Get the origin of request from the FE, and check whether it lies in the allowed array or nottt..
+let allowed = ["http://localhost:3000","http://localhost:2005"];
+
+You can't create route for every /something in your server.js, it is unprofessional.
+So create a folder called "routes" and then create .js files for each of the routes.
+e.g. user.js
+const express = require("express"); const router = express.Router();
+app.get("/user", (req, res) => {  res.send("Welcome to user home");});
+module.exports = router;
