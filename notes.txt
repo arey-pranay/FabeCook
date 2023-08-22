@@ -41,9 +41,23 @@ function options(req,res){let tmp; let origin = req.header("Origin) if(allowed.i
 Get the origin of request from the FE, and check whether it lies in the allowed array or nottt..
 let allowed = ["http://localhost:3000","http://localhost:2005"];
 
+*Routing Properly*
+
 You can't create route for every /something in your server.js, it is unprofessional.
 So create a folder called "routes" and then create .js files for each of the routes.
-e.g. user.js
+
+e.g. 
+
+user.js
 const express = require("express"); const router = express.Router();
-app.get("/user", (req, res) => {  res.send("Welcome to user home");});
+router.get("/user", (req, res) => {  res.send("Welcome to user home");});
 module.exports = router;
+
+and in server.js
+const userRoute = require("./routes/user");
+app.use("/", userRoute);
+
+and in Postman GET
+http://localhost:8000/user
+
+so you'll see Welcome to user home

@@ -6,12 +6,16 @@ const app = express();
 //   useSuccessStatus: 200,
 // };
 app.use(cors());
+
+const userRoute = require("./routes/user");
+app.use("/", userRoute);
+
 app.listen(8000, () => {
   console.log("Server Started");
 });
-app.get("/", (req, res) => {
-  res.send("Welcome to the slash");
-});
-app.get("/books", (req, res) => {
-  res.send("Welcome to booksies");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to the slash");
+// });
+// app.get("/books", (req, res) => {
+//   res.send("Welcome to booksies");
+// });
