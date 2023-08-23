@@ -1,8 +1,8 @@
+const { f1 } = require("../controllers/user");
 const express = require("express");
 const router = express.Router();
 
-router.get("/user", (req, res) => {
-  res.send("Welcome to user home");
-});
+//if router gets something/user, then this will be executed
+router.get("/user", f1);
 
 module.exports = router;
