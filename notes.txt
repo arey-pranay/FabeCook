@@ -41,23 +41,44 @@ function options(req,res){let tmp; let origin = req.header("Origin) if(allowed.i
 Get the origin of request from the FE, and check whether it lies in the allowed array or nottt..
 let allowed = ["http://localhost:3000","http://localhost:2005"];
 
-*Routing Properly*
-
 You can't create route for every /something in your server.js, it is unprofessional.
 So create a folder called "routes" and then create .js files for each of the routes.
-
-e.g. 
-
-user.js
+e.g. user.js
 const express = require("express"); const router = express.Router();
-router.get("/user", (req, res) => {  res.send("Welcome to user home");});
+app.get("/user", (req, res) => {  res.send("Welcome to user home");});
 module.exports = router;
-
-and in server.js
+e.g server.js
+//userRoute is imported from user.js
 const userRoute = require("./routes/user");
+//whenever something / comes, go and call userRoute
 app.use("/", userRoute);
 
-and in Postman GET
-http://localhost:8000/user
+you can also write app.use("/user",userRoute) and then add "/add" in user.js, so that whenever something/user/add comes, that function is excuted
 
-so you'll see Welcome to user home
+* readdirSync *
+//for all x in ./routes,map them to their functions separately. like whenever you get "/", call "./routes/x"
+readdirSync("./routes").map((x) => app.use("/", require("./routes/" + x)));
+//by using this, we won't need individual functions for each route.
+
+*controllers folder*
+we can keep all the functions of routes seperately in a different folder with the same name as its corresponding route
+e.g., controllers/user.js
+exports.f1 = (req, res) => {
+  res.send("Welcome to user home");
+};
+e.g., routes/user.js
+const { f1 } = require("../controllers/user");
+router.get("/user", f1);
+
+*.env*
+npm i dotenv 
+.env files are used to store important information
+
+in server.js
+const PORT = process.env.PORT;
+in .env
+PORT = 8000
+
+*MongoDB Atlas*
+Create a user, create a project, create a database, connect database to project
+Save all the necessary details in .env file
