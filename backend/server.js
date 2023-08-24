@@ -1,14 +1,27 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 const PORT = process.env.PORT;
 const { readdirSync } = require("fs"); //file system is abbreviated as fs
+const { request } = require("http");
 
 const app = express();
 app.use(cors());
 
+//routes
 readdirSync("./routes").map((x) => app.use("/", require("./routes/" + x)));
+
+//databases
+mongoose
+  .connect(process.env.DATABASE_URL, {
+    useNewURLParser: true,
+  })
+  .then(() => {
+    console.log("database successfully connected");
+  })
+  .catch((err) => console.log("errorrrrrrrrrrr"));
 
 app.listen(PORT, () => {
   console.log("Server Started");
