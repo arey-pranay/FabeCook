@@ -82,3 +82,28 @@ PORT = 8000
 *MongoDB Atlas*
 Create a user, create a project, create a database, connect database to project
 Save all the necessary details in .env file
+
+//databases
+mongoose
+  .connect(process.env.DATABASE_URL, {
+    useNewURLParser: true,
+  })
+  .then(() => {
+    console.log("database successfully connected");
+  }).catch((err)=>console.log("errorrrrrrrrrrr"));
+
+*sending in JSON format*
+in controllers/user.js
+
+exports.f1 = (req, res) => {
+  res.status(200).json({
+    messsage: "aofjeoijeo",
+    error: "irjfefi",
+  });
+}; 
+//200 means all good
+//status 204 means you won't get body, but the request was successful
+//404 means not found
+//400, bad request or error
+//403, means forbidden, cannot be authenticated
+to check ,go to postman on your project and type http://localhost:8000/user
