@@ -107,3 +107,18 @@ exports.f1 = (req, res) => {
 //400, bad request or error
 //403, means forbidden, cannot be authenticated
 to check ,go to postman on your project and type http://localhost:8000/user
+
+*models folder*
+
+which type of data and structure and validations are supposed to be handled by data.
+Create js files for all the categories. e.g.,
+models/data.js
+const mongoose = require("mongoose");
+const userSchema = mongoose.Schema({
+  first_name: {
+    type: String,
+    required: [true, "first name is required"],
+    trim: true,
+    text: true,
+  }, etc etc.
+})
