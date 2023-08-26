@@ -122,3 +122,24 @@ const userSchema = mongoose.Schema({
     text: true,
   }, etc etc.
 })
+
+*Posting the data*
+routes/user.js
+router.post("/register", register);
+controllers/user.js
+exports.register = (req, res) => {
+  console.log(req.body);
+};
+
+Postman http://localhost:8000/register
+Post -> Body -> Raw -> JSON
+{
+  "first_name": "Pranay"
+  "last_name":"Parikh"
+  "email":"pranayparikh2004@gmail.com"
+  "password":"Qwert"
+  "bYear":"2004"
+  "bMonth":"2"
+  "bDay":"2"
+  "gender":"male"
+}
