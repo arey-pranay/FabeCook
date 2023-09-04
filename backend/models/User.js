@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 const userSchema = mongoose.Schema(
   {
     first_name: {
@@ -108,6 +109,9 @@ const userSchema = mongoose.Schema(
       currentCity: {
         type: String,
       },
+      hometown: {
+        type: String,
+      },
       relationship: {
         type: String,
         enum: ['"Single","In A Relationship","Married","Divorced"'],
@@ -134,4 +138,4 @@ const userSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-module.exports = mongoose.model("User");
+module.exports = mongoose.model("User", userSchema);

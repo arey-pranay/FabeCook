@@ -1,5 +1,5 @@
-const { register } = require("../controllers/user");
 const express = require("express");
+const { register } = require("../controllers/user");
 const router = express.Router();
 
 //if router gets something/user, then this will be executed
