@@ -9,7 +9,7 @@ const { request } = require("http");
 
 const app = express();
 app.use(cors());
-
+app.use(express.json());
 //routes
 readdirSync("./routes").map((x) => app.use("/", require("./routes/" + x)));
 
