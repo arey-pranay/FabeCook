@@ -144,3 +144,7 @@ Post -> Body -> Raw -> JSON
   "bDay":"2",
   "gender":"male"
 }
+
+Post
+
+MongoDB Compass. Connect Database. Users. You'll receive sent req.
