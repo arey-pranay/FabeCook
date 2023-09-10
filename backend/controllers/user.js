@@ -1,3 +1,4 @@
+const { sendVerificationEmail } = require("../helpers/mailer");
 const { generateToken } = require("../helpers/tokens");
 const {
   validateEmail,
@@ -5,6 +6,7 @@ const {
   validateUsername,
 } = require("../helpers/validation");
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 exports.register = async (req, res) => {
   try {
@@ -69,8 +71,52 @@ exports.register = async (req, res) => {
       { id: user._id.toString() },
       "30m"
     );
-    console.log(emailVerificationToken);
-    res.json(user);
+    const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
+    sendVerificationEmail(user.email, user.first_name, url);
+    const token = generateToken({ id: user._id.toString() }, "7d");
+    res.send({
+      id: user._id,
+      username: user.username,
+      picture: user.picture,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      token: token,
+      verified: user.verified,
+      message: "Registered Successfully | Verification Remaining Yet",
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+exports.activateAccount = async (req, res) => {
+  const { token } = req.body;
+  const user = jwt.verify(token, process.env.TOKEN_SECRET);
+  const check = await User.findById(user.id);
+  if (check.verified == true) {
+    return res.status(400).json({ message: "your email is already activated" });
+  } else {
+    await User.findByIdAndUpdate(user.id, { verified: true });
+    return res
+      .status(200)
+      .json({ message: "your email was successfully activated" });
+  }
+};
+
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: "There is no account associated with this email ya" });
+    }
+    const check = await bcrypt.compare(password, user.password);
+    if (check) {
+      return res.status(400).json({ message: "Access Given" });
+    } else {
+      return res.status(400).json({ message: "Please recheck credentials ya" });
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
