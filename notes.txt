@@ -148,3 +148,40 @@ Post -> Body -> Raw -> JSON
 Post
 
 MongoDB Compass. Connect Database. Users. You'll receive sent req.
+
+//Validity email regex     return String(email).toLowerCase().match(/^([a-z\d\.-])+@([a-z\d-]+)\.([a-z]{2,12})(\.[a-z]{2,12})?$/);
+While taking input in user.js :
+  if (!validateEmail(email)) {
+      return res.status(400).json({
+        message: "invalid email",
+      });
+    }
+
+//Checking uniqueness of the given email:
+ const check = await User.findOne({ email });
+    if (check) { return res.status(400).json({
+        message: "This email is already registered na..",
+      });
+    }
+
+//password encryption and decryp using bcrypt.
+    const cryptedPass = await bcrypt.hash(password, 12);
+    console.log(cryptedPass);
+
+
+
+whenever we check in the database, use async function and async and await keywords.
+
+time in milliseconds or quantity is calculated from UNIX system origin start that is from 1970. +newDate() return those milliseconds.
+
+JSON web tokens JWT
+const jwt = require("jsonwebtoken");
+exports.generateToken = (payload, expired) => {
+  return jwt.sign(payload, process.env.TOKEN_SECRET, {
+    expiresIn: expired,
+  });
+};
+    const emailVerificationToken = generateToken(
+      { id: user._id.toString() },
+      "30m"
+    );
