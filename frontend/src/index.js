@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "./styles/icons/icons.css";
 import App from "./App";
-
+import { BrowserRouter as Routerr } from "react-router-dom";
 ReactDOM.render(
-  <React.StrictMode>
+  <Routerr>
     <App />
-  </React.StrictMode>,
+  </Routerr>,
   document.getElementById("root")
 );

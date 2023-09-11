@@ -1,17 +1,16 @@
+npm i react-router-dom redux redux react-redux redux0devtools-extension
+
+in index.js import { BrowserRouter as Routerr } from "react-router-dom";
+in App.js 
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
-import Profile from "./pages/profile";
-import Home from "./pages/home";
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/" element={<Home />} />
       </Routes>
     </div>
   );
 }
-
 export default App;
