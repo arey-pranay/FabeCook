@@ -1,0 +1,74 @@
+import { Formik, Form } from "formik";
+import { Link } from "react-router-dom";
+import LoginInput from "../../components/inputs/logininput";
+import * as Yup from "yup";
+import { useState } from "react";
+
+const loginInfos = {
+  email: "",
+  password: "",
+};
+
+export default function LoginForm() {
+  const [login, setLogin] = useState(loginInfos);
+  const { email, password } = login;
+  console.log(login);
+  const handleLoginChange = (e) => {
+    const { name, value } = e.target;
+    setLogin({ ...login, [name]: value });
+  };
+  const loginValidation = Yup.object({
+    email: Yup.string()
+      .required("Email Address is needed bruh")
+      .email("That's an invalid Email"),
+    password: Yup.string().required("You sure you don't need a password ?"),
+  });
+  return (
+    <div className="login_wrap">
+      <div className="login_1">
+        <img src="../../icons/loggg.png" alt="" />
+        <span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome to ViMeet
+          <br /> The place where VITians meet
+        </span>
+      </div>
+      <div className="login_2">
+        <div className="login_2_wrap">
+          <Formik
+            enableReinitialize
+            initialValues={{ email, password }}
+            validationSchema={loginValidation}
+          >
+            {(formik) => (
+              <Form>
+                <LoginInput
+                  type="text"
+                  name="email"
+                  placeholder="Enter Your VIT Email"
+                  onChange={handleLoginChange}
+                />
+                <LoginInput
+                  type="password"
+                  name="password"
+                  placeholder="Enter Your ViMeet Password"
+                  onChange={handleLoginChange}
+                />
+                <button type="submit" className="purple_btn">
+                  Log In
+                </button>
+              </Form>
+            )}
+          </Formik>
+          <Link to="/forgot" className="forgot_password">
+            Forgot Password ??
+          </Link>
+          <div className="sign_splitter"></div>
+          <button className="purple_btn open_signup">Create Account</button>
+        </div>
+        {/* <Link to="/" className="sign_extra">
+              <b>Create a Page</b> &nbsp; for your club or community
+            </Link> */}
+      </div>
+    </div>
+  );
+}

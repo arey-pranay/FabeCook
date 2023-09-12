@@ -1,10 +1,17 @@
+import { Routes, Route } from "react-router-dom";
+import Login from "./pages/login";
+import Profile from "./pages/profile";
+import Home from "./pages/home";
 function App() {
-  const get = async () => {
-    const res = await fetch("http://localhost:8000"); //backend is hosted at this address, and you'll need to wait for the request to process before fetching it
-    console.log(res);
-  };
-  get();
-  return <div>welcome to frontend</div>;
+  return (
+    <div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
