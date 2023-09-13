@@ -28,7 +28,7 @@ a {
   --dark-color-secondary: #b0b3b8;
   --blue-color: #1876f2;
   --purple-color: #6807b3;
-  --green-color: #42b72a;
+  --green-color: #e38b1e;
   --orange-color: #e38b1e;
   --light-blue-color: #e7f3ff;
   --border-color: #ccced2;
@@ -42,7 +42,7 @@ a {
 .purple_btn {
   border: none;
   outline: none;
-  padding: 0.5px 12px;
+  padding: 8.5px 12px;
   background: var(--purple-color);
   border-radius: 7px;
   font-family: inherit;
@@ -52,7 +52,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 60px;
+  gap: 6px;
   cursor: pointer;
 }
 

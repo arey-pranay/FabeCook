@@ -18,7 +18,7 @@
   color: var(--color-primary);
 }
 .input_wrap input:focus {
-  border-color: var(--purple-color) !important;
+  border-color: var(--purple-color);
 }
 .input_error_border {
   border-color: #b94a48 !important;
@@ -32,11 +32,11 @@
 .input_error {
   position: relative;
   padding: 15px 10px;
-  background: #e15822;
+  background: #b94a48;
   width: 100%;
   color: #fff;
   font-size: 13px;
-  border-radius: 15px;
+  border-radius: 5px;
   margin-bottom: 15px;
 }
 .error_arrow_top {
@@ -60,10 +60,10 @@
   top: -3px;
 }
 .error_arrow_left {
-  border-left: 10px solid #e15822;
-  border-bottom: 10px solid transparent;
+  border-left: 10px solid #b94a48;
   border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
   position: absolute;
   right: -10px;
-  top: 14px;
+  top: 13px;
 }

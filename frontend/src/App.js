@@ -6,9 +6,9 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} exact />
+        <Route path="/profile" element={<Profile />} exact />
+        <Route path="/" element={<Home />} exact />
       </Routes>
     </div>
   );
