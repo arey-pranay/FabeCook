@@ -36,7 +36,19 @@ export default function RegisterForm() {
   };
   const days = Array.from(new Array(getDays()), (val, index) => 1 + index);
   const registerValidation = Yup.object({
-    first_name: Yup.string().required(),
+    first_name: Yup.string()
+      .required("No First Name..? ")
+      .matches(/^[aA-zZ]+$/, "Only Alphabets allowed here.."),
+    last_name: Yup.string
+      .required("No Last Name..?")
+      .matches(/^[aA-zZ]+$/, "Only Alphabets allowed here.."),
+    email: Yup.string.required("Provide your VIT email plz"),
+    password: Yup.string()
+      .required(
+        "Enter a combination of at least 6 numbers, letters and punctuation marks (such as ! and &)"
+      )
+      .min(6, "Minimum 6 characters")
+      .max(30, "Maximum 30 characters"),
   });
 
   return (
