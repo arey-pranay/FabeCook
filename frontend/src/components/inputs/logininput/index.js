@@ -1,7 +1,6 @@
 import "./style.css";
 import { useField, ErrorMessage } from "formik";
 import { useMediaQuery } from "react-responsive";
-
 export default function LoginInput({ placeholder, bottom, ...props }) {
   const [field, meta] = useField(props);
   const desktopView = useMediaQuery({

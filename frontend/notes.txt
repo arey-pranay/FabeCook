@@ -77,3 +77,9 @@ export default function RegisterForm() {
   value="female"
   onChange={handleRegisterChange}
                     />
+
+Using && for conditoinal rendering
+
+              {error&& <div className="error_text">{error}</div>}
+              {error&& <div className="success_text">{success}</div>}
+          
