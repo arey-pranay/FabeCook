@@ -310,3 +310,12 @@
   }
 }
 /*----Media queries--------------*/
+
+/* Error and Success */
+
+.error_text {
+  color: #b94a48;
+}
+.success_text {
+  color: lightgreen;
+}

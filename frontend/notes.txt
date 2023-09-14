@@ -1,0 +1,85 @@
+npm i react-router-dom redux redux react-redux redux0devtools-extension
+
+in index.js import { BrowserRouter as Routerr } from "react-router-dom";
+in App.js 
+import { Routes, Route } from "react-router-dom";
+import Login from "./pages/login";
+function App() {
+  return (
+    <div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </div>
+  );
+}
+export default App;
+
+
+//using reducer and redux.. difference between normal imports vs {} imports ????
+
+npm i formik and npm i yup for using forms in login and sign-up ig
+if you use Link, it doesn't refresh, it just looks for the changes in the state
+formik is used for creating form and Yup is used for error validation messages convenience increased more
+
+npm i react-responsive
+
+centring trick (for absolute position given element(s))- 
+.register {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.register_header span:first-of-type {
+  font-weight: 700;
+  font-size: 32px;
+}
+.register_header span:last-of-type {
+  font-size: 15px;
+  color: var(--color-secondary);
+}
+
+import React, { useState } from "react";
+import RegisterInput from "../inputs/registerinput/index";
+const userInfos = {
+  first_name: "",
+  last_name: "",
+  email: "",
+  password: "",
+  bYear: new Date().getDate,
+  bMonth: new Date().getMonth + 1,
+  bDay: new Date().getFullYear,
+  gender: "",
+};
+export default function RegisterForm() {
+  const [user, setUser] = useState(userInfos);
+  const handleRegisterChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+
+  const yearLatest = new Date().getFullYear();
+  const years = Array.from(new Array(100), (val, index) => yearLatest - index);
+  const months = Array.from(new Array(12), (val, index) => 1 + index);
+  const getDays = () => {
+    return new Date(bYear, bMonth, 0).getDate();
+  };
+
+
+
+ <input
+  type="radio"
+  name="gender"
+  id="female"
+  value="female"
+  onChange={handleRegisterChange}
+                    />
+
+Using && for conditoinal rendering
+
+              {error&& <div className="error_text">{error}</div>}
+              {error&& <div className="success_text">{success}</div>}
+          

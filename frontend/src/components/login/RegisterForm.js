@@ -60,6 +60,9 @@ export default function RegisterForm() {
   });
   const [dateError, setDateError] = useState("");
   const [genderError, setGenderError] = useState("");
+  const [error, setError] = useState("Error Message");
+  const [success, setSuccess] = useState("Success Message");
+  const [loading, setLoading] = useState("Loadinf");
   return (
     <div className="blur">
       <div className="register">
@@ -173,6 +176,8 @@ export default function RegisterForm() {
               <div className="reg_btn_wrapper">
                 <button className="blue_btn open_signup">Sign Up</button>
               </div>
+              {error && <div className="error_text">{error}</div>}
+              {error && <div className="success_text">{success}</div>}
             </Form>
           )}
         </Formik>
