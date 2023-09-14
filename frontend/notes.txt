@@ -83,3 +83,68 @@ Using && for conditoinal rendering
               {error&& <div className="error_text">{error}</div>}
               {error&& <div className="success_text">{success}</div>}
           
+npm install --save react-spinners
+import { useState, CSSProperties } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
+
+  <ClipLoader
+        color={color}
+        loading={loading}
+        cssOverride={override}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
+
+npm install --save react-spinners
+loading animation
+
+npm i axios for sending requests from the frontend to backend
+const registerSubmmit = async () => {
+    try {
+      setSuccess("");
+      setError("");
+      setLoading(true);
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/register`,
+        {
+          first_name,
+          last_name,
+          email,
+          password,
+          bYear,
+          bMonth,
+          bDay,
+          gender,
+        }
+      );
+      setLoading(false);
+      setSuccess(
+        "Registered Successfully ! Let's just quickly verify your email"
+      );
+      setError("");
+    } catch (error) {
+      setLoading(false);
+      setSuccess("");
+      setError(error.response.data.message);
+    }
+  };
+
+
+
+  npm i js-cookies
+        //storing data in cookies by redux
+      const { message, ...rest } = data;
+      setTimeout(() => {
+        dispatch({ type: "LOGIN", payload: rest });
+        Cookies.setItem("user", JSON.stringify(rest));
+        navigate("/");
+      }, 2000);
+
+in reducers/userReducer.js
+export function userReducer(
+  //to prevent the loss of cookies on refresh
+  state = Cookies.get("user") ? JSON.parse(Cookies.get("user")) : null,
+  action
+)

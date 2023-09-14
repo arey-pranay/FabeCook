@@ -63,7 +63,7 @@
   color: white;
   font-weight: 600 !important;
   font-size: 17px !important;
-  margin-top: 1rem;
+  margin-top: -0.5rem;
   padding: 0.8rem 0;
   border: none;
 }
@@ -317,5 +317,6 @@
   color: #b94a48;
 }
 .success_text {
-  color: lightgreen;
+  font-weight: 400;
+  color: var(--purple-color);
 }
