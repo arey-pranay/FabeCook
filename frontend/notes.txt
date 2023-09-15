@@ -148,3 +148,5 @@ export function userReducer(
   state = Cookies.get("user") ? JSON.parse(Cookies.get("user")) : null,
   action
 )
+
+//showing the sign-up popup on the  same page as login

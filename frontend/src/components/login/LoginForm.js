@@ -9,7 +9,7 @@ const loginInfos = {
   password: "",
 };
 
-export default function LoginForm() {
+export default function LoginForm({ setVisible }) {
   const [login, setLogin] = useState(loginInfos);
   const { email, password } = login;
   const handleLoginChange = (e) => {
@@ -26,9 +26,9 @@ export default function LoginForm() {
     <div className="login_wrap">
       <div className="login_1">
         <img src="../../icons/loggg.png" alt="" />
-        <span>
+        <span className="login_subheader">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome to ViMeet
-          <br /> The place where VITians meet
+          <p>The place where VITians meet</p>
         </span>
       </div>
       <div className="login_2">
@@ -62,7 +62,15 @@ export default function LoginForm() {
             Forgot Password ??
           </Link>
           <div className="sign_splitter"></div>
-          <button className="purple_btn open_signup">Create Account</button>
+          <button
+            className="purple_btn open_signup"
+            onClick={() => {
+              setVisible(true);
+              console.log("object");
+            }}
+          >
+            Create Account
+          </button>
         </div>
         {/* <Link to="/" className="sign_extra">
               <b>Create a Page</b> &nbsp; for your club or community

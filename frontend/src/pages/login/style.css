@@ -1,11 +1,18 @@
 /*-------login-----*/
+.login {
+  overflow-x: hidden;
+}
 .login_wrapper {
-  background: var(--bg-secondary);
+  padding-top: 10%;
+  background: var(--purple-color);
 }
 
 .login_wrap {
-  height: 78vh;
+  height: 98vh;
   color: var(--color-primary);
+
+  position: relative;
+  z-index: 2;
 }
 .login_1 {
   width: 300px;
@@ -14,7 +21,7 @@
 .login_1 img {
   display: block;
   height: 150px;
-  margin: 2rem auto;
+  margin: 2em auto;
 }
 
 .login_1 span {
@@ -34,7 +41,7 @@
   padding-bottom: 2rem;
   width: 350px;
   height: fit-content;
-  margin: 1rem auto;
+  margin: 0 auto;
   user-select: none;
   border-radius: 10px;
 }
@@ -188,7 +195,15 @@
 /*----Footer------*/
 .footer {
   /* height: 22vh; */
-  display: none;
+
+  display: inline;
+  position: absolute;
+  /* left: 28%; */
+  padding: 2% 27%;
+  background: var(--bg-primary);
+  width: 100vw;
+  font-weight: bolder;
+  color: var(--orange-color);
 }
 .login_footer_wrap {
   display: flex;
@@ -238,6 +253,18 @@
   left: -97%;
   top: 15px !important;
 }
+
+.login_subheader {
+  margin-top: 5%;
+  padding-left: 3%;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+.login_subheader p {
+  padding-left: 2%;
+  margin-bottom: 30%;
+}
+
 /*----dob and gender errors-----*/
 
 /*----Media queries--------------*/
@@ -279,16 +306,21 @@
   }
   .login_1 img {
     /* width: 300px; */
-    margin-left: 6rem;
+    margin-left: 7rem;
     margin-top: 8em;
     margin-bottom: 1rem;
   }
-
+  .login_subheader {
+    padding: 0%;
+  }
+  .login_wrapper {
+    padding-top: 0;
+  }
   .login_1 span {
     font-size: 28px;
   }
   .login_2_wrap {
-    margin-top: 20%;
+    margin-top: 0%;
     width: 400px;
   }
   .input_wrap {
@@ -297,16 +329,25 @@
   .login_footer_wrap {
     max-width: 900px;
   }
-
+  .slider-thumb::before {
+    top: 12%;
+    margin-left: 10%;
+    width: 500px;
+    height: 400px;
+  }
   .footer {
     /* height: 22vh; */
-    display: block;
-    background: var(--bg-primary);
-    padding: 1.5rem;
+    display: inline;
+    background: var(--bg-secondary);
     position: absolute;
     /* margin-bottom: 0px; */
+    margin: 0;
     bottom: 0px;
-    left: 42%;
+    left: 0%;
+    padding-left: 44%;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+    width: 100%;
   }
 }
 /*----Media queries--------------*/

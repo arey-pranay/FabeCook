@@ -16,6 +16,7 @@ a {
 :root {
   --bg-primary: #fff;
   --bg-secondary: #f0f2f5;
+  /* --bg-secondary: #6807b3; */
   --bg-third: #e4e6eb;
   --bg-forth: #f0f2f5;
   --color-primary: #050505;
@@ -36,6 +37,40 @@ a {
   --shadow-2: rgba(0, 0, 0, 0.1);
   --shadow-3: rgba(0, 0, 0, 0.3);
   --shadow-inset: rgba(255, 255, 255, 0.5);
+}
+
+.slider-thumb::before {
+  position: absolute;
+  content: "";
+  /* margin-left: 20%; */
+  top: 5%;
+  width: 400px;
+  height: 320px;
+  background: white;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  will-change: border-radius, transform, opacity;
+  animation: sliderShape 5s linear infinite;
+  display: block;
+  z-index: 0;
+  -webkit-animation: sliderShape 5s linear infinite;
+}
+@keyframes sliderShape {
+  0%,
+  100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  34% {
+    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  67% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+  }
 }
 
 /* Buttons */
@@ -66,6 +101,6 @@ a {
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.768);
+  background-color: rgba(238, 212, 247, 0.94);
   z-index: 99;
 }
