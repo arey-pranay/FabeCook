@@ -46,13 +46,14 @@ a {
   top: 5%;
   width: 400px;
   height: 320px;
-  background: white;
+  background: #e38b1e;
+  transition: 1s;
   border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
   will-change: border-radius, transform, opacity;
   animation: sliderShape 5s linear infinite;
   display: block;
   z-index: 0;
-  -webkit-animation: sliderShape 5s linear infinite;
+  -webkit-animation: sliderShape 2s linear infinite;
 }
 @keyframes sliderShape {
   0%,
@@ -73,6 +74,22 @@ a {
   }
 }
 
+.slider-thumb2::before {
+  position: absolute;
+  content: "";
+  /* margin-left: 20%; */
+  top: 5%;
+  width: 400px;
+  height: 320px;
+  background: white;
+  transition: 1s;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  will-change: border-radius, transform, opacity;
+  animation: sliderShape 5s linear infinite;
+  display: block;
+  z-index: 0;
+  -webkit-animation: sliderShape 2s linear infinite;
+}
 /* Buttons */
 .purple_btn {
   border: none;

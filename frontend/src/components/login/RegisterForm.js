@@ -89,9 +89,7 @@ export default function RegisterForm({ setVisible }) {
         }
       );
       setLoading(false);
-      setSuccess(
-        "Registered Successfully ! Let's just quickly verify your email"
-      );
+      setSuccess("Registered Successfully ! Please verify your email ");
       setError("");
       //storing data in cookies by redux
       const { message, ...rest } = data;

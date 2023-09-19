@@ -1,12 +1,26 @@
 /*-------login-----*/
-.login {
+/* .login {
   overflow-x: hidden;
-}
+} */
 .login_wrapper {
   padding-top: 10%;
-  background: var(--purple-color);
+  /* background: linear-gradient(45deg, #f5b05b, #6807b3); */
+  /* background: var(--purple-color); */
+  background: linear-gradient(45deg, #6807b3, #000000);
 }
-
+/* .login_wrapper {
+  --c: #6807b3;
+  line-height: 1.2em;
+  background: conic-gradient(from -135deg at 100% 50%, var(--c) 90deg, #0000 0)
+      0 var(--p, 0%) / var(--s, 0%) 200% no-repeat,
+    conic-gradient(from -135deg at 1.2em 50%, #0000 90deg, var(--c) 0) 100%
+      var(--p, 0%) / var(--s, 0%) 200% no-repeat;
+  transition: 0.4s ease-in, background-position 0s;
+}
+.login_wrapper:hover {
+  --p: 100%;
+  --s: calc(50% + 0.61em);
+} */
 .login_wrap {
   height: 98vh;
   color: var(--color-primary);
@@ -199,10 +213,12 @@
   display: inline;
   position: absolute;
   /* left: 28%; */
-  padding: 2% 27%;
-  background: var(--bg-primary);
+  padding: 2% 30%;
+  background: white;
+  /* background: var(--bg-primary); */
   width: 100vw;
-  font-weight: bolder;
+  font-size: small;
+  font-weight: bold;
   color: var(--orange-color);
 }
 .login_footer_wrap {
@@ -258,9 +274,10 @@
   margin-top: 5%;
   padding-left: 3%;
   color: var(--color-secondary);
-  font-weight: 600;
+  font-weight: 500;
 }
 .login_subheader p {
+  margin-top: 1%;
   padding-left: 2%;
   margin-bottom: 30%;
 }
@@ -331,14 +348,21 @@
   }
   .slider-thumb::before {
     top: 12%;
-    margin-left: 10%;
-    width: 500px;
-    height: 400px;
+    margin-left: 7rem;
+    width: 32rem;
+    height: 25rem;
+  }
+  .slider-thumb2::before {
+    top: 12%;
+    margin-left: 7rem;
+    width: 32rem;
+    height: 25rem;
   }
   .footer {
     /* height: 22vh; */
     display: inline;
-    background: var(--bg-secondary);
+    /* background: var(--bg-secondary); */
+    background: white;
     position: absolute;
     /* margin-bottom: 0px; */
     margin: 0;
