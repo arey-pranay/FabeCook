@@ -4,7 +4,12 @@ import RegisterInput from "../inputs/registerInput";
 import * as Yup from "yup";
 import DateOfBirthSelect from "./DateOfBirthSelect";
 import GenderSelect from "./GenderSelect";
-export default function RegisterForm() {
+import HashLoader from "react-spinners/HashLoader";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import Cookies from "js-cookies";
+import { useNavigate } from "react-router-dom";
+export default function RegisterForm({ setVisible }) {
   const userInfos = {
     first_name: "",
     last_name: "",
@@ -60,14 +65,55 @@ export default function RegisterForm() {
   });
   const [dateError, setDateError] = useState("");
   const [genderError, setGenderError] = useState("");
-  const [error, setError] = useState("Error Message");
-  const [success, setSuccess] = useState("Success Message");
-  const [loading, setLoading] = useState("Loadinf");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const registerSubmmit = async () => {
+    try {
+      setSuccess("");
+      setError("");
+      setLoading(true);
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/register`,
+        {
+          first_name,
+          last_name,
+          email,
+          password,
+          bYear,
+          bMonth,
+          bDay,
+          gender,
+        }
+      );
+      setLoading(false);
+      setSuccess("Registered Successfully ! Please verify your email ");
+      setError("");
+      //storing data in cookies by redux
+      const { message, ...rest } = data;
+      setTimeout(() => {
+        dispatch({ type: "LOGIN", payload: rest });
+        Cookies.setItem("user", JSON.stringify(rest));
+        navigate("/");
+      }, 2000);
+    } catch (error) {
+      setLoading(false);
+      setSuccess("");
+      setError(error.response.data.message);
+    }
+  };
   return (
     <div className="blur">
       <div className="register">
         <div className="register_header">
-          <i className="exit_icon"></i>
+          <i
+            className="exit_icon"
+            onClick={() => {
+              setVisible(false);
+            }}
+          ></i>
           <span>Sign Up</span>
           <span>
             An Amazing Adventure Awaits <strong className="YOUU">You</strong>
@@ -92,13 +138,9 @@ export default function RegisterForm() {
             let atleast14 = new Date(1970 + 14, 0, 1);
             let noMoreThan70 = new Date(1970 + 70, 0, 1);
             if (current_date - picked_date < atleast14) {
-              setDateError(
-                "it looks like you've entered the wrong info.Please make sure that you use your real date of birth."
-              );
+              setDateError("Bruv, you underage !");
             } else if (current_date - picked_date > noMoreThan70) {
-              setDateError(
-                "it looks like you've entered the wrong info.Please make sure that you use your real date of birth."
-              );
+              setDateError("Nah sir, ya too old for this shit n all");
             } else if (gender === "") {
               setDateError("");
               setGenderError(
@@ -107,6 +149,7 @@ export default function RegisterForm() {
             } else {
               setDateError("");
               setGenderError("");
+              registerSubmmit();
             }
           }}
         >
@@ -177,7 +220,15 @@ export default function RegisterForm() {
                 <button className="blue_btn open_signup">Sign Up</button>
               </div>
               {error && <div className="error_text">{error}</div>}
-              {error && <div className="success_text">{success}</div>}
+              {success && <div className="success_text">{success}</div>}
+              <HashLoader
+                color={"#6807b3"}
+                loading={loading}
+                // cssOverride={override}
+                size={30}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />{" "}
             </Form>
           )}
         </Formik>
