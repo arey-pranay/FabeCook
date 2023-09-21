@@ -150,3 +150,84 @@ export function userReducer(
 )
 
 //showing the sign-up popup on the  same page as login
+use blur 
+.blur {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(238, 212, 247, 0.94);
+  z-index: 99;
+}
+
+//To go from one link to other
+import { Link } from "react-router-dom";
+<Link to="/" className="header_logo">
+<div className="circle">
+<h1>Click me ya plz</h1>
+</div>
+</Link>
+
+index.css 
+src/components/header 
+src/helpers
+src/data
+
+//when there's a lot of data, put the data in a json format / object format in a data.js, 
+then map your function/component to that file and slice the resultant according to your need
+ export const menu = [
+  {
+    name: "Campus",
+    icon: "campus",
+    description: "A unique, exclusive space for college students on Facebook.",
+  },
+  {
+    name: "Events",
+    icon: "events",
+    description: "Organize or find events in your campus.",
+  }
+  .....
+  ]
+ ---------------
+  import menu
+
+ <div className="all_menu_group">
+            <div className="all_menu_group_header">More from Pranay</div>
+            {menu.slice(21, 25).map((item, i) => (
+              <AllMenuItem
+                name={item.name}
+                description={item.description}
+                icon={item.icon}
+                key={i}
+              />
+            ))}
+  </div>
+
+ 
+
+//wowww, multiple menus, single variable..
+putting
+const [visibility, setVisibility] = useState(-1)
+when you want main menu 
+use this same variable for displaying all the different menus by incrementing or decrementing its values.
+Coz at one time only one menu is to be shown, that's why we can work with only 1 variable also.
+onclick: setVisibility(0)
+then inside the main menu, the settings icon: setVisibility(1)
+then you can come out again by when you click on the menu icon coz setVisibility(0)
+
+//why are Labels used..?
+
+the browser first sees if any media queries need to be applied and then it checks your written code
+//when you use Desktop-first, 
+you use things like:
+@media (max-width: 1200 px){
+  .....
+}
+it means that as long as screen is less than 1200 px wide, use these
+
+but when you do mobile-first, 
+you use stuff like:
+@media (min-width:1200 px){
+  it means that as soon as we cross 1200 px, use this
+}
