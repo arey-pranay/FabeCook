@@ -231,3 +231,7 @@ you use stuff like:
 @media (min-width:1200 px){
   it means that as soon as we cross 1200 px, use this
 }
+
+---------------------------
+Protected Routes
+//to not let  
